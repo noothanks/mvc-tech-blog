@@ -4,30 +4,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Just Tech News</title>
+  <title>Tech Blog</title>
   <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 
 <body>
   <div class="wrapper">
-    <header>
-      <h1>
-        <a href="/">Tech Blog</a>
+    <header class="hero flex-row justify-space-between">
+      <h1 class="app-title">
+        Tech Blog
       </h1>
-      <nav>
+      <nav class="flex-row justify-space-between nav">
         {{#if loggedIn}}
-        <a href="/dashboard">Dashboard</a>
-        <button id="logout" class="btn-no-style">Logout</button>ogout</button>
+        <a href="/" class="card-header">Homepage</a>
+            <a href="/dashboard" class="card-header">Dashboard</a>
+            <button id="logout" class="card-header">Logout</button>
         {{else}}
-        <a href="/login">Login</a>
+            <a href="/login" class="card-header">Login</a>
+            <a href="/" class="card-header">Sign Up</a>
         {{/if}}
       </nav>
     </header>
     <main>
       {{{ body }}}
     </main>
-    <footer>
+    <footer class="hero card-header">
+    {{#if loggedIn}}
       Thanks for visiting!
+    {{else}}
+        Login or create an account to interact with posts
+    {{/if}}
     </footer>
   </div>
   

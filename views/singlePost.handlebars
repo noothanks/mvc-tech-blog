@@ -1,4 +1,4 @@
-{{> post-info post}}
+{{> postInfo post}}
 
 {{#if loggedIn}}
 <form class="comment-form">
@@ -12,6 +12,8 @@
   </div>
 </form>
 {{/if}}
+
+{{content}}
 
 {{> comments post.comments}}
 

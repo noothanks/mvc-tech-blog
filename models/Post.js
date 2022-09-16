@@ -15,7 +15,7 @@ class Post extends Model {
         },
         attributes: [
           'id',
-          'post_url',
+          'content',
           'title',
           'created_at',
           //runs sql query like normal
@@ -50,11 +50,11 @@ Post.init(
       type: DataTypes.STRING,
       allowNull: false
     },
-    post_content: {
-      type: DataTypes.TEXT,
+    content: {
+      type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        isURL: false
+        len: [1]
       }
     },
     user_id: {

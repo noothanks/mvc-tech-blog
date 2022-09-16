@@ -26,7 +26,7 @@ router.get('/:id', (req, res) => {
       {
         //gets all posts by the user
         model: Post,
-        attributes: ['id', 'title', 'post_url', 'created_at']
+        attributes: ['id', 'title', 'content', 'created_at']
       },
       {
         //gets posts commented on
@@ -60,7 +60,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.post('/', withAuth, (req, res) => {
+router.post('/', (req, res) => {
   // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
   //translation: INSERT INTO users (username, email, password) VALUES (req.body.stuff)
   User.create({
@@ -69,6 +69,7 @@ router.post('/', withAuth, (req, res) => {
     password: req.body.password
   })
     .then(dbUserData => {
+        console.log(dbUserData)
 
       //make sure the session exists before response
       //done by wrapping in callback
@@ -95,7 +96,7 @@ router.post('/login', (req, res) => {
     }
   }).then(dbUserData => {
     if (!dbUserData) {
-      res.status(400).json({ message: 'No user with that email address!' });
+      res.status(400).json({ message: 'No user with these credentials!' });
       return;
     }
 

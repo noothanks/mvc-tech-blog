@@ -1,14 +1,14 @@
-<section>
-  <h2>Create New Post</h2>
+<section class="card">
+    <h2 class="card-header">Create New Post</h2>
 
-  <form class="new-post-form">
+  <form class="card-body">
     <div>
-      <label for="post-title">Title</label>
-      <input type="text" id="post-title" name="post-title" />
+      <label for="post-title" class="form-label">Title</label>
+      <input type="text" id="post-title" name="post-title" class="form-input" />
     </div>
     <div>
-      <label for="content">Link</label>
-      <input id="content" name="content" />
+      <label for="content" class="form-label">Post Content</label>
+      <input id="content" name="content" class="form-input" />
     </div>
     <button type="submit" class="btn">Create</button>
   </form>
@@ -20,11 +20,11 @@
   <ol>
     {{#each posts as |post|}}
     <li>
-      {{> post-info post}}
-      <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>
+      {{> postInfo post}}
+      <a href="/dashboard/edit/{{post.id}}" class="btn">Edit post</a>
     </li>
     {{/each}}
   </ol>
 </section>
-<script src="/javascript/add-post.js"></script>
 {{/if}}
+<script src="/javascript/addPost.js"></script>

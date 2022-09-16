@@ -11,7 +11,7 @@ router.get('/', withAuth, (req, res) => {
       },
       attributes: [
         'id',
-        'post_url',
+        'content',
         'title',
         'created_at',
         [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
@@ -45,13 +45,11 @@ router.get('/', withAuth, (req, res) => {
 router.get('/edit/:id', withAuth, (req, res) => {
     Post.findOne({
         where: {
-            id: req.params.id,
-          // use the ID from the session
-          user_id: req.session.user_id
+            id: req.params.id
         },
         attributes: [
           'id',
-          'post_url',
+          'content',
           'title',
           'created_at',
           [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
@@ -74,7 +72,7 @@ router.get('/edit/:id', withAuth, (req, res) => {
         .then(dbPostData => {
           // serialize data before passing to template
           const post = dbPostData.get({ plain: true });
-          res.render('edit-post', { 
+          res.render('editPost', { 
             post, 
             loggedIn: true });
         })

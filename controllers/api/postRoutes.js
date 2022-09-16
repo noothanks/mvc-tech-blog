@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
     //specifies which columns we want to retrieve
     attributes: [
       'id',
-      'post_url',
+      'content',
       'title',
       'created_at',
       //gets vote data through sql literal
@@ -53,7 +53,7 @@ router.get('/:id', (req, res) => {
     },
     attributes: [
       'id',
-      'post_url',
+      'content',
       'title',
       'created_at',
       [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
@@ -87,11 +87,10 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', withAuth, (req, res) => {
-  // expects {title: 'Taskmaster goes public!', post_url: 'https://taskmaster.com/press', user_id: 1}
-  if (req.session) {
+  // expects {title: 'Taskmaster goes public!', content: 'https://taskmaster.com/press', user_id: 1}
     Post.create({
       title: req.body.title,
-      post_url: req.body.post_url,
+      content: req.body.content,
       user_id: req.session.user_id
     })
       .then(dbPostData => res.json(dbPostData))
@@ -99,13 +98,12 @@ router.post('/', withAuth, (req, res) => {
         console.log(err);
         res.status(500).json(err);
       });
-  }
 });
 
 router.put('/upvote', withAuth, (req, res) => {
   // custom static method created in models/Post.js
   //make sure session exists first
-  if (req.session) {
+
     //destructure properties on req.body
     //uses saved user id in session
     //inserts new record into vote table
@@ -115,14 +113,15 @@ router.put('/upvote', withAuth, (req, res) => {
         console.log(err);
         res.status(500).json(err);
       });
-  }
+  
 });
 
 router.put('/:id', withAuth, (req, res) => {
   Post.update(
     //select property to update
     {
-      title: req.body.title
+      title: req.body.title,
+      content: req.body.content
     },
     //select which post by id
     {

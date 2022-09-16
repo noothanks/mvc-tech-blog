@@ -3,7 +3,7 @@ async function newFormHandler(event) {
     
     //grab form data
     const title = document.querySelector('input[name="post-title"]').value;
-    const post_url = document.querySelector('input[name="post-url"]').value;
+    const content = document.querySelector('input[name="content"]').value;
     
     //send post request passing in form data
     //user id from session
@@ -11,7 +11,7 @@ async function newFormHandler(event) {
       method: 'POST',
       body: JSON.stringify({
         title,
-        post_url
+        content
       }),
       headers: {
         'Content-Type': 'application/json'

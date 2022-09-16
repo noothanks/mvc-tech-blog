@@ -1,16 +1,19 @@
 {{> postInfo post}}
 
 {{#if loggedIn}}
-<form class="comment-form">
+<div class="card">
+  <h2 class="card-header">Leave a comment here:</h2>
+  <form class="card-body" id="comment-form">
   <div>
-    <textarea name="comment-body"></textarea>
+    <textarea name="comment-body" class="form-input"></textarea>
   </div>
 
   <div>
-    <button type="submit">add comment</button>
-    <button type="button" class="upvote-btn">upvote</button>
+    <button type="submit" class="btn">Add comment</button>
+    <button type="button" class="btn" id="upvote-btn">Upvote</button>
   </div>
 </form>
+</div>
 {{/if}}
 
 {{content}}

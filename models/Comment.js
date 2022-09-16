@@ -12,7 +12,7 @@ Comment.init(
       autoIncrement: true
     },
     comment_text: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
       validate: {
         //comment must have text

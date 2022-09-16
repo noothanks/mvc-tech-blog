@@ -128,7 +128,9 @@
   }
   
   .list-item {
+    display: flex;
     margin-bottom: 10px;
+    height: 100%;
     padding: 1.5%;
     border-radius: var(--border-radius);
     background-color: var(--light-dark);

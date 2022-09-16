@@ -21,7 +21,9 @@ const sess = {
 
   //tell program to use cookies
   //set properties within obj
-  cookie: {}, 
+  cookie: {
+    maxAge: 3600000
+  }, 
 
   //forces session to saved back to store even if the cookie hasnt been modified
   //defaullt is true
@@ -63,6 +65,6 @@ app.use(require('./controllers/'));
 //must be set to true and restarted when changes are made to shcema
 //translates to DROP IF EXISTS
 //then set back to false to avoid tables being dropped when you don't want them to
-sequelize.sync({ force: false }).then(() => {
+sequelize.sync({ force: false}).then(() => {
   app.listen(PORT, () => console.log(`Now listening on port ${PORT}`));
 });

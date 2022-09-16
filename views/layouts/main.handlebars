@@ -15,8 +15,8 @@
         Tech Blog
       </h1>
       <nav class="flex-row justify-space-between nav">
-        {{#if loggedIn}}
         <a href="/" class="card-header">Homepage</a>
+        {{#if loggedIn}}
             <a href="/dashboard" class="card-header">Dashboard</a>
             <button id="logout" class="card-header">Logout</button>
         {{else}}
@@ -32,7 +32,7 @@
     {{#if loggedIn}}
       Thanks for visiting!
     {{else}}
-        Login or create an account to interact with posts
+        Login or create an account to create and interact with posts
     {{/if}}
     </footer>
   </div>

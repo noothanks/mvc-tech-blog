@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
+    "seeds": "node seeds/index.js",
     "start": "node server.js"
   },
   "repository": {
@@ -17,5 +18,19 @@
   "bugs": {
     "url": "https://github.com/noothanks/mvc-tech-blog/issues"
   },
-  "homepage": "https://github.com/noothanks/mvc-tech-blog#readme"
+  "homepage": "https://github.com/noothanks/mvc-tech-blog#readme",
+  "dependencies": {
+    "sequelize": "^5.21.5",
+    "mysql2": "^2.1.0",
+    "bcrypt": "^4.0.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "connect-session-sequelize": "^6.1.1",
+    "express-handlebars": "^3.1.0",
+    "express-session": "^1.17.0",
+    "handlebars": "^4.7.3"
+  },
+  "devDependencies": {
+    "jest": "^25.1.0"
+  }
 }

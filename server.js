@@ -56,7 +56,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 //turn on routes
-//app.use(require('./controllers/'));
+app.use(require('./controllers/'));
 
 //turn on connection to db and server
 //force: false says to use the current tables without dropping and recreating them

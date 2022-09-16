@@ -17,7 +17,7 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const sess = {
   //set session secret
   //should be stored in .env
-  secret: process.env.SESSION_SECRET,
+  secret: 'robotcowcop',
 
   //tell program to use cookies
   //set properties within obj
